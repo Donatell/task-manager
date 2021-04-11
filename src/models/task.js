@@ -4,7 +4,7 @@ const taskSchema = mongoose.Schema({
 	description: {
 		type: String,
 		required: true,
-		trim: true,
+		trim: true
 
 	},
 	completed: {
@@ -18,8 +18,8 @@ const taskSchema = mongoose.Schema({
 	}
 }, {
 	timestamps: true
-})
+});
 
-const Task = mongoose.model('Task', taskSchema)
+const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;

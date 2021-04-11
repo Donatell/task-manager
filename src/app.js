@@ -5,17 +5,17 @@ const express = require('express');
 require('./db/mongoose.js');
 
 // import routers
-const usersRouter = require('./routers/users.js')
-const tasksRouter = require('./routers/tasks.js')
+const usersRouter = require('./routers/users.js');
+const tasksRouter = require('./routers/tasks.js');
 
 // setup express server
 const app = express();
 
 // recognize incoming requests as JSON objects
-app.use(express.json())
+app.use(express.json());
 
 // use routers
-app.use(usersRouter)
-app.use(tasksRouter)
+app.use(usersRouter);
+app.use(tasksRouter);
 
-module.exports = app
+module.exports = app;
