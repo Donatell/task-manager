@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 // use routers
-app.use(usersRouter);
-app.use(tasksRouter);
+app.use('/api', usersRouter);
+app.use('/api', tasksRouter);
 
 module.exports = app;
