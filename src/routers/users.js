@@ -31,15 +31,24 @@ const router = new express.Router();
 
 // create a user
 router.post('/users', async (req, res) => {
-	const user = new User(req.body);
+	let user = new User(req.body);
 
 	try {
 		await user.save();
-		sendWelcomeEmail(user.email, user.name);
+		// sendWelcomeEmail(user.email, user.name);
 		const token = await user.generateAuthToken();
-		res.status(201).send({ user, token });
+		res.status(201).json({ user, token, msg: 'Account Created' });
 	} catch (error) {
-		res.status(400).send(error);
+		switch (error.code) {
+			case 11000:
+				res.status(202).json({ msg: 'E-Mail already taken' });
+				break;
+			default:
+				console.log('Uncaught Error Code: ', error.code);
+				console.log('Error Object:', error);
+				break;
+		}
+
 	}
 });
 

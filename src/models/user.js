@@ -3,6 +3,7 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Task = require('./task.js');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = new mongoose.Schema({
 	name: {
@@ -54,6 +55,8 @@ const userSchema = new mongoose.Schema({
 }, {
 	timestamps: true
 });
+
+// userSchema.plugin(uniqueValidator, { type: 'mongoose-unique-validator' });
 
 userSchema.virtual('tasks', {
 	ref: 'Task',
